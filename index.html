@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title>dexpy demo</title>
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="reveal.js/css/theme/moon.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/league.css">
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
@@ -80,7 +80,7 @@ Hank Anderson
     <p class="fragment">Correlation != Causation</p>
     <p class="fragment">
       <img src="img/correlation.png"><br>
-      <small style="font-size:8;">(http://tylervigen.com/view_correlation?id=97)</small>
+      <small style="font-size:8;"><a href="http://tylervigen.com/view_correlation?id=97">source</a></small>
     </p>
   </section>
   <section>
@@ -193,6 +193,197 @@ Hank Anderson
     <img src="img/factorial_3d.svg">
   </section>
 </section>
+
+<section>
+  <h2>Statistical Power</h2>
+
+  <p>The probability that a design will detect an active effect.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Effect?</th>
+        <th>Retain H<sub>0</sub></th>
+        <th>Reject H<sub>0</sub></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>No</strong></td>
+        <td>OK</td>
+        <td>Type I Error</td>
+      </tr>
+      <tr>
+        <td><strong>Yes</strong></td>
+        <td>Type II Error</td>
+        <td>OK</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Power is expressed as a probability to detect an effect of size Δ, given noise σ. This is typically given as a delta to sigma ratio Δ/σ. Power is a function of the signal to noise ratio, as well as the number and layout of experiments in the design.</p>
+</section>
+
+<section>
+  <section>
+    <h2>Power Example</h2>
+    <p>We taste test 25 pots of coffee with light beans, and 25 pots with dark
+    beans. There is a variance of 1.5 taste rating from pot to pot.</p>
+    <p>If we expect a 0.5 change in the taste rating when going from light to dark,
+    what is the likelihood we would detect it?</p>
+  </section>
+  <section>
+    <img src="img/power_50.svg"><br>
+    (Power: <span class="fragment highlight-red">37.86%</span>)
+    <br>
+    <p style="font-size: 10;">Note: this assumes that we reject H<sub>0</sub> at p <= 0.05</p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Power Example - Increase Delta</h2>
+    <p>
+      What if we don't care about a taste increase of 0.5? That's not that much better
+      than the current coffee, after all. Instead, if we say we only care about a change
+      in rating above 2, what is the likelihood we would detect such a change?
+    </p>
+  </section>
+  <section>
+    <img src="img/power_50_2.svg"><br>
+      (Power: <span class="fragment highlight-green">99.99983%</span>)
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Power Example - Decrease Noise</h2>
+    <p>
+      Instead of lowering our standards for our noisy taste ratings, instead
+      we could bring in expert testers who have a much more discerning palate.
+      These tasters decrease the taste rating variability from 1.5 to 0.75.
+    </p>
+  </section>
+  <section>
+    <img src="img/power_50_3.svg"><br>
+      (Power: <span class="fragment highlight-green">91%</span>)
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Power Example - Increase Runs</h2>
+    <p>
+      If expert testers are too expensive, and we are unwilling to compromise
+      our standards, then the only remaining option is to change the experimental
+      deisgn. In this toy example, there isn't much we can do other than increase
+      the number of pots of coffee from 50 to 200.
+    </p>
+  </section>
+  <section>
+    <img src="img/power_50_4.svg"><br>
+      (Power: <span class="fragment highlight-green">91.39%</span>)
+    <p>
+      For more complicated designs changing the structure of the design
+      can also increase power.
+    </p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Calculating Power with dexpy: OFAT</h2>
+
+    <pre>
+      <code data-trim data-noescape>
+base_point = [-1, -1, -1, -1, -1]
+ofat_points = [base_point]
+
+for i in range(0, 5):
+    new_point = base_point[:]
+    new_point[i] = 1
+    ofat_points.append(new_point)
+
+ofat_df = pd.DataFrame(ofat_points*5,
+                       columns=['amount',
+                                'grind_size',
+                                'brew_time',
+                                'grind_type',
+                                'beans'])
+model = ' + '.join(ofat_df.columns)
+ofat_power = dexpy.power.f_power('+'.join(ofat_df.columns),
+                                 ofat_df, 2.0, 0.05)
+      </code>
+    </pre>
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+30 total runs, with a signal to noise ratio of 2.
+
+||Power|
+|---|---|
+|amount|85.85%|
+|grind_size|85.85%|
+|brew_time|85.85%|
+|grind_type|85.85%|
+|beans|85.85%|
+    </textarea>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Calculating Power with dexpy: Factorial</h2>
+    <pre>
+      <code data-trim data-noescape>
+full_design = dexpy.factorial.build_factorial(5, 2**5)
+full_design.columns = ['amount',
+                       'grind_size',
+                       'brew_time',
+                       'grind_type',
+                       'beans']
+factorial_power = dexpy.power.f_power(model, full_design, sn, alpha)
+      </code>
+    </pre>
+  </section>
+
+  <section data-markdown>
+    <textarea data-template>
+32 total runs, with a signal to noise ratio of 2.
+
+||Power|
+|---|---|
+|amount|99.97%|
+|grind_size|99.97%|
+|brew_time|99.97%|
+|grind_type|99.97%|
+|beans|99.97%|
+    </textarea>
+  </section>
+</section>
+
+<section>
+  <section data-markdown>
+    <textarea data-template>
+## Fractional Factorials
+
+* Coffee experiment is 2<sup>5</sup> runs (32)
+* We want to add 4 center point runs to check for curvature
+* Total runs = 36, 3 per day if all testers are in the office
+* Estimate experiment will take a month
+    </textarea>
+  </section>
+
+  <section data-markdown>
+    <textarea data-template>
+## Fractional Factorials
+* Power for the experiment is > 99%
+* Full factorial is overkill
+* Instead run 2<sup>5-1</sup> experiments, a "half fraction"
+    </textarea>
+  </section>
+</section>
+
 
 </div>
 </div>
