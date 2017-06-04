@@ -342,7 +342,8 @@ full_design.columns = ['amount',
                        'brew_time',
                        'grind_type',
                        'beans']
-factorial_power = dexpy.power.f_power(model, full_design, sn, alpha)
+model = ' + '.join(full_design.columns)
+factorial_power = dexpy.power.f_power(model, full_design, 2.0, 0.05)
       </code>
     </pre>
   </section>
@@ -396,6 +397,8 @@ coffee_design.columns = ['amount',
                          'brew_time',
                          'grind_type',
                          'beans']
+model = ' + '.join(coffee_design.columns)
+fractional_power = dexpy.power.f_power(model, coffee_design, 2.0, 0.05)
 			</code>
 		</pre>
 	</section>
@@ -643,6 +646,24 @@ coffee_design.columns = ['amount',
   </section>
 
   <section>
+    <h2>2<sup>(5-1)</sup> Factorial Power<br>(Interaction Model)</h2>
+    <pre>
+      <code data-trim data-noescape>
+coffee_design = dexpy.factorial.build_factorial(5, 2**(5-1))
+coffee_design.columns = ['amount',
+                         'grind_size',
+                         'brew_time',
+                         'grind_type',
+                         'beans']
+twofi_model = "(" + '+'.join(coffee_design.columns) + ")**2"
+fractional_power = dexpy.power.f_power(twofi_model, coffee_design,
+                                       2.0, 0.05)
+			</code>
+		</pre>
+  </section>
+
+  <section>
+    <h3>2<sup>(5-1)</sup> Factorial Power<br>(Interaction Model)</h3>
     <table style="font-size: 18;">
       <thead>
         <tr>
