@@ -737,6 +737,110 @@ fractional_power = dexpy.power.f_power(twofi_model, coffee_design,
   </section>
 </section>
 
+<section>
+  <section data-markdown>
+    <textarea data-template>
+## Analysis
+
+* [statsmodels](http://statsmodels.sourceforge.net/) has many routines for modeling data
+* We will use [Ordinary Least Squares (OLS)](http://statsmodels.sourceforge.net/devel/examples/notebooks/generated/ols.html) to fit
+* `statsmodels` typically takes `numpy` arrays for X and y data
+* It also has a "formulas" api that accepts a `patsy` formula
+    </textarea>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Interaction Model</h2>
+    <pre>
+      <code data-trim data-noescape>
+twofi_model = "(" + '+'.join(coffee_design.columns) + ")**2"
+lm = statsmodels.formula.api.ols("taste_rating ~" + twofi_model,
+                                 data=coffee_design).fit()
+print(lm.summary2())
+      </code>
+    </pre>
+  </section>
+  <section>
+    <pre>
+                   Results: Ordinary least squares
+=====================================================================
+Model:                OLS               Adj. R-squared:      <span class="fragment highlight-blue">0.904</span>
+Dependent Variable:   taste_rating      AIC:                 54.9989
+Date:                 2017-06-02 23:07  BIC:                 73.8478
+No. Observations:     24                Log-Likelihood:      -11.499
+Df Model:             15                F-statistic:         15.52
+Df Residuals:         8                 Prob (F-statistic):  <span class="fragment highlight-blue">0.000271</span>
+R-squared:            <span class="fragment highlight-blue">0.967</span>             Scale:               0.45796
+---------------------------------------------------------------------
+                       Coef.  Std.Err.    t    P>|t|   [0.025  0.975]
+---------------------------------------------------------------------
+Intercept              5.0318   0.1381 36.4265 0.0000  4.7133  5.3504
+amount                 0.9731   0.1692  5.7521 0.0004  0.5830  1.3633
+grind_size             0.0021   0.1692  0.0127 <span class="fragment highlight-red">0.9902</span> -0.3880  0.3923
+brew_time              1.2061   0.1692  7.1293 0.0001  0.8160  1.5963
+grind_type            -0.0974   0.1381 -0.7053 <span class="fragment highlight-red">0.5006</span> -0.4160  0.2211
+beans                  0.5774   0.1381  4.1802 0.0031  0.2589  0.8960
+amount:grind_size      0.0859   0.1692  0.5074 <span class="fragment highlight-red">0.6255</span> -0.3043  0.4760
+amount:brew_time      -0.0824   0.1692 -0.4871 <span class="fragment highlight-red">0.6393</span> -0.4725  0.3077
+amount:grind_type     -0.1885   0.1692 -1.1140 <span class="fragment highlight-red">0.2976</span> -0.5786  0.2017
+amount:beans          -1.4820   0.1692 -8.7600 0.0000 -1.8722 -1.0919
+grind_size:brew_time   0.3961   0.1692  2.3413 0.0473  0.0060  0.7862
+grind_size:grind_type -0.6927   0.1692 -4.0946 0.0035 -1.0829 -0.3026
+grind_size:beans       0.2202   0.1692  1.3017 <span class="fragment highlight-red">0.2292</span> -0.1699  0.6104
+brew_time:grind_type   0.8850   0.1692  5.2312 0.0008  0.4949  1.2752
+brew_time:beans        0.1727   0.1692  1.0209 <span class="fragment highlight-red">0.3372</span> -0.2174  0.5629
+grind_type:beans       0.0360   0.1381  0.2607 <span class="fragment highlight-red">0.8009</span> -0.2825  0.3546
+=====================================================================
+    </pre>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Reduced Model</h2>
+    <pre>
+      <code data-trim data-noescape class="py">
+reduced_model = "amount + grind_size + brew_time + "
+                "grind_type + beans + "
+                "amount:beans + grind_size:brew_time + "
+                "grind_size:grind_type"
+
+lm = statsmodels.formula.api.ols("taste_rating ~" + reduced_model,
+                                  data=coffee_design).fit()
+print(lm.summary2())
+      </code>
+    </pre>
+  </section>
+
+  <section>
+    <pre>
+                   Results: Ordinary least squares
+=====================================================================
+Model:                OLS               Adj. R-squared:      <span class="fragment highlight-blue">0.746</span>
+Dependent Variable:   taste_rating      AIC:                 79.5691
+Date:                 2017-06-02 23:07  BIC:                 90.1715
+No. Observations:     24                Log-Likelihood:      -30.785
+Df Model:             8                 F-statistic:         9.438
+Df Residuals:         15                Prob (F-statistic):  <span class="fragment highlight-blue">0.000123</span>
+R-squared:            <span class="fragment highlight-blue">0.834</span>             Scale:               1.2184
+---------------------------------------------------------------------
+                       Coef.  Std.Err.    t    P>|t|   [0.025  0.975]
+---------------------------------------------------------------------
+Intercept              5.0318   0.2253 22.3328 0.0000  4.5516  5.5121
+amount                 0.9731   0.2759  3.5266 0.0031  0.3850  1.5613
+grind_size             0.0021   0.2759  0.0078 0.9939 -0.5860  0.5903
+brew_time              1.2061   0.2759  4.3709 0.0005  0.6180  1.7943
+grind_type            -0.0974   0.2253 -0.4324 0.6716 -0.5777  0.3828
+beans                  0.5774   0.2253  2.5628 0.0216  0.0972  1.0577
+<span class="fragment highlight-green">amount:beans          -1.4820   0.2759 -5.3707 0.0001 -2.0702 -0.8939</span>
+<span class="fragment highlight-green">grind_size:brew_time   0.3961   0.2759  1.4354 0.1717 -0.1921  0.9843</span>
+grind_size:grind_type -0.6927   0.2759 -2.5103 0.0240 -1.2809 -0.1046
+=====================================================================
+    </pre>
+  </section>
+</section>
 
 </div>
 </div>
