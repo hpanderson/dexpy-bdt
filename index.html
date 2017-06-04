@@ -842,6 +842,110 @@ grind_size:grind_type -0.6927   0.2759 -2.5103 0.0240 -1.2809 -0.1046
   </section>
 </section>
 
+<section>
+  <section>
+    <h1>Prediction</h1>
+  </section>
+  <section>
+    <h2>Actual vs Predicted</h2>
+    <p>
+      If we take the experiment data from the design and use our new model to fit that data, then plot it against
+      the observed values we can get an idea for how well our model predicts.
+      Points above the 45 degree line are
+      overpredicting for that combination of inputs. Points below the line predict a lower taste rating than
+      we actually measured during the experiment.
+    </p>
+
+  </section>
+
+  <section>
+    <h2>Actual vs Predicted</h2>
+    <pre>
+      <code>
+actual_predicted = pd.DataFrame(
+  {
+    'actual': coffee_design['taste_rating'],
+    'predicted': lm.fittedvalues
+  }, index=np.arange(len(coffee_design['taste_rating'])))
+fg = sns.FacetGrid(actual_predicted, size=5)
+fg.map(plt.scatter, 'actual', 'predicted')
+      </code>
+    </pre>
+  </section>
+  <section>
+    <img src="img/actual_vs_predicted.svg">
+  </section>
+
+  <section>
+    <h2>Interaction Plots</h2>
+    <p>
+      Plotting the prediction for two factors at once shows how they interact with each other.
+    </p>
+  </section>
+
+  <section>
+    <h2>Interaction Plots</h2>
+    <h3>Grind Size vs Brew Time</h3>
+    <pre>
+      <code>
+pred_points = pd.DataFrame(1, columns = coffee_design.columns,
+                              index=np.arange(4))
+pred_points.loc[1,'grind_size'] = -1
+pred_points.loc[3,'grind_size'] = -1
+pred_points.loc[2,'brew_time'] = -1
+pred_points.loc[3,'brew_time'] = -1
+pred_points['taste_rating'] = lm.predict(pred_points)
+pred_points = coded_to_actual(pred_points, actual_lows, actual_highs)
+
+fg = sns.factorplot('grind_size',
+                    'taste_rating',
+                    hue='brew_time', kind='point', data=pred_points)
+      </code>
+    </pre>
+  </section>
+
+  <section>
+    <img src="img/grindsize_vs_brewtime.svg">
+    <p>
+      In this graph you can see that at the low brew time the larger grind size
+      results in a poor taste rating, likely because the coffee is too weak.
+    </p>
+  </section>
+
+  <section>
+    <h2>Interaction Plots</h2>
+    <h3>Amount vs Bean Type</h3>
+    <pre>
+      <code>
+pred_points = pd.DataFrame(1, columns = coffee_design.columns,
+                              index=np.arange(4))
+pred_points.loc[1,'amount'] = -1
+pred_points.loc[3,'amount'] = -1
+pred_points.loc[2,'beans'] = -1
+pred_points.loc[3,'beans'] = -1
+pred_points['taste_rating'] = lm.predict(pred_points)
+pred_points = coded_to_actual(pred_points, actual_lows, actual_highs)
+
+fg = sns.factorplot('amount', 'taste_rating', hue='beans',
+                    kind='point',
+                    palette={'dark': 'maroon', 'light': 'peru'},
+                    data=pred_points)
+      </code>
+    </pre>
+  </section>
+
+
+  <section>
+    <img src="img/amount_vs_beans.svg">
+    <p>
+      This graph contains the prediction with the highest taste rating, 7.72.
+      However, if you look at the dark bean line there is a point where we can
+      get a rating of 6.93 with 2.5oz of grounds.
+    </p>
+  </section>
+</section>
+
+
 </div>
 </div>
 <script src="reveal.js/lib/js/head.min.js"></script>
