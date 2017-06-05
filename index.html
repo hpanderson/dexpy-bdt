@@ -84,7 +84,10 @@ Hank Anderson
     </p>
   </section>
   <section>
-    <img src="img/tinfoil_coffee.png">
+    <blockquote>
+    To consult the statistician after an experiment is finished is often merely to ask him to conduct a post mortem examination. He can perhaps say what the experiment died of.
+    </blockquote>
+    - R.A. Fisher
   </section>
 </section>
 
@@ -103,9 +106,12 @@ Hank Anderson
   <section data-markdown>
     <textarea data-template>
 ## Examples
-* A/B testing of a website
+* Multivariate testing of a website
 * Allocating marketing budget resources
 * Microwave popcorn
+    <aside class="notes">
+      Mention blown up microwave.
+    </aside>
     </textarea>
   </section>
 </section>
@@ -156,47 +162,13 @@ Hank Anderson
 </section>
 
 <section>
-	<section>
-
-		<h3>One Factor at a Time Experimentation</h3>
-
-		<ul>
-			<li>Hold all inputs constant, then change one at a time</li>
-			<li>Cannot detect interactions, e.g. grind size and amount of coffee have a synergistic relationship</li>
-			<li>Inefficient</li>
-    </ul>
-  </section>
-
-  <section>
-    <img src="img/ofat.svg">
-	</section>
-
-  <section>
-    <img src="img/ofat_3d.svg">
-	</section>
-</section>
-
-<section>
-  <section data-markdown>
-    <textarea data-template>
-## Factorial Design
-
-* Change multiple inputs at once
-* Reveals interactions
-* Maximizes information with minimum runs
-    </textarea>
-  </section>
-  <section>
-    <img src="img/factorial.svg">
-  </section>
-  <section>
-    <img src="img/factorial_3d.svg">
-  </section>
+  <p>How do we know whether a given design will yield usable results?</p>
 </section>
 
 <section>
   <h2>Statistical Power</h2>
 
+  <!--
   <p>The probability that a design will detect an active effect.</p>
 
   <table>
@@ -219,9 +191,14 @@ Hank Anderson
         <td>OK</td>
       </tr>
     </tbody>
-  </table>
+    </table>-->
 
-  <p>Power is expressed as a probability to detect an effect of size Δ, given noise σ. This is typically given as a delta to sigma ratio Δ/σ. Power is a function of the signal to noise ratio, as well as the number and layout of experiments in the design.</p>
+  <p>
+    Power is expressed as a probability to detect an effect of size Δ, given
+    noise σ. This is typically given as a delta to sigma ratio Δ/σ. Power is
+    a function of the signal to noise ratio, as well as the number and layout
+    of experiments in the design.
+  </p>
 </section>
 
 <section>
@@ -276,7 +253,7 @@ Hank Anderson
     <p>
       If expert testers are too expensive, and we are unwilling to compromise
       our standards, then the only remaining option is to change the experimental
-      deisgn. In this toy example, there isn't much we can do other than increase
+      design. In this toy example, there isn't much we can do other than increase
       the number of pots of coffee from 50 to 200.
     </p>
   </section>
@@ -288,6 +265,27 @@ Hank Anderson
       can also increase power.
     </p>
   </section>
+</section>
+
+<section>
+	<section>
+
+		<h3>One Factor at a Time Experimentation</h3>
+
+		<ul>
+			<li>Hold all inputs constant, then change one at a time</li>
+			<li>Cannot detect interactions, e.g. grind size and amount of coffee have a synergistic relationship</li>
+			<li>Inefficient</li>
+    </ul>
+  </section>
+
+  <section>
+    <img src="img/ofat.svg">
+	</section>
+
+  <section>
+    <img src="img/ofat_3d.svg">
+	</section>
 </section>
 
 <section>
@@ -330,6 +328,29 @@ ofat_power = dexpy.power.f_power('+'.join(ofat_df.columns),
     </textarea>
   </section>
 </section>
+
+<section>
+  <section data-markdown>
+    <textarea data-template>
+## Factorial Design
+
+* Change multiple inputs at once
+* Reveals interactions
+* Maximizes information with minimum runs
+    </textarea>
+  </section>
+  <section>
+    <img src="img/factorial.svg">
+    <aside class="notes">
+      Warn about extreme settings (microwave explosion).
+    </aside>
+  </section>
+  <section>
+    <img src="img/factorial_3d.svg">
+  </section>
+</section>
+
+
 
 <section>
   <section>
@@ -846,7 +867,7 @@ grind_size:grind_type -0.6927   0.2759 -2.5103 0.0240 -1.2809 -0.1046
   <section>
     <h1>Prediction</h1>
   </section>
-  <section>
+  <!--<section>
     <h2>Actual vs Predicted</h2>
     <p>
       If we take the experiment data from the design and use our new model to fit that data, then plot it against
@@ -874,7 +895,7 @@ fg.map(plt.scatter, 'actual', 'predicted')
   </section>
   <section>
     <img src="img/actual_vs_predicted.svg">
-  </section>
+  </section>-->
 
   <section>
     <h2>Interaction Plots</h2>
