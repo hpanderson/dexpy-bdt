@@ -1,21 +1,53 @@
 
 <html>
 <head>
-		<meta charset="utf-8">
-		<title>dexpy demo</title>
-    <link rel="stylesheet" href="reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="reveal.js/css/theme/league.css">
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-				var link = document.createElement( 'link' );
-				link.rel = 'stylesheet';
-				link.type = 'text/css';
-				link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
-				document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+<meta charset="utf-8">
+<title>dexpy demo</title>
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/league.css">
+<!-- Code syntax highlighting -->
+<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+<!-- Printing and PDF exports -->
+<script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+
+<style>
+table.coffeeTable {
+  font-size: 16; 
+}
+
+table.coffeeTable td:first-child, table.coffeeTable th:first-child {
+  border-right: 2px solid white;
+}
+
+table.coffeeResultsTable td:last-child, table.coffeeResultsTable th:last-child {
+  border-left: 2px solid white;
+}
+
+table.coffeeResultsTable td:last-child {
+  color: #cd853f; 
+  border-color: white;
+}
+
+div.coffeePot {
+  margin-bottom: 20px;
+}
+
+div.coffeePot img {
+  margin: 0px;
+  border: none;
+  background: transparent;
+}
+</style>
+
+
 </head>
 <body>
 <div class="reveal">
@@ -94,15 +126,36 @@
 </section>
 
 <section>
-  <h2>What Is It For?</h2>
-  <div style="font-size:24; text-align: left;">
+  <section>
+    <h2>What Is DOE Used For?</h2>
     <p class="fragment"><b>Screening</b> - Identify important factors</p>
-    <p class="fragment" style="padding-left:50px;">Example: A manufacturer changing many different properties of a stent to determine which ones affect burst pressure.</p>
-    <p class="fragment"><b>Optimization</b> - Improve the output of your process</p>
-    <p class="fragment" style="padding-left:50px;">Example: Multifactor testing of different layouts of a website.</p>
+    <div class="fragment" style="text-align: left;">
+      <img style="float:right;" src="img/stent.png" height="200px">
+      <p>
+        Example: A manufacturer changing many different properties of a stent to determine which ones affect burst pressure.
+      </p>
+    </div>
+  </section>
+  <section>
+    <h2>What Is DOE Used For?</h2>
+    <p><b>Optimization</b> - Improve the output of your process</p>
+    <div class="fragment" style="text-align: left;">
+      <img style="float:left; margin-right: 20px;" src="img/layout.png" height="200px">
+      <p>
+        Example: Multifactor testing of different layouts of a website.
+      </p>
+    </div>
+  </section>
+  <section>
+    <h2>What Is DOE Used For?</h2>
     <p class="fragment"><b>Robustness</b> - Find a combination of inputs that produces a consistent result</p>
-    <p class="fragment" style="padding-left:50px;">Example: Injection molding process with a difficult to control moisture component.</p>
-  </div>
+    <div class="fragment" style="text-align: left;">
+      <img style="float:right;" src="img/gear.jpg" height="200px">
+      <p>
+        Example: Injection molding process with a difficult to control moisture component.
+      </p>
+    </div>
+  </section>
 </section>
 
 <section data-markdown>
@@ -151,7 +204,276 @@
 </section>
 
 <section>
-  <p>How do we know whether a given design will yield usable results?</p>
+  <h3>How much coffee do we need to drink?</h3>
+  <div style="text-align: left;">
+    <div class="fragment coffeePot">
+      <img src="img/coffee_pot.png" height="100px">
+      <img src="img/coffee_pot.png" height="100px">
+      <img src="img/coffee_pot.png" height="100px">
+    </div>
+    <div class="fragment coffeePot">
+      <img src="img/coffee_pot.png" height="50px">
+      <img src="img/coffee_pot.png" height="50px">
+      <img src="img/coffee_pot.png" height="50px">
+      <img src="img/coffee_pot.png" height="50px">
+      <img src="img/coffee_pot.png" height="50px">
+      <img src="img/coffee_pot.png" height="50px">
+      <img src="img/coffee_pot.png" height="50px">
+      <img src="img/coffee_pot.png" height="50px">
+      <img src="img/coffee_pot.png" height="50px">
+      <img src="img/coffee_pot.png" height="50px">
+    </div>
+    <div class="fragment coffeePot">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+      <img src="img/coffee_pot.png" height="25px">
+    </div>
+  </div>
+  <!--<p style="font-size: 14;">
+    Factorial, Fractional factorial, D-optimal design, Plackett-Burman,
+    Taguchi OA, Definitive Screening, Box-Behnken, Central composite,
+    Generalized randomized block design, Balanced incomplete block design,
+    Latin square, Graeco-Latin square, Orthogonal array, Latin hypercube,
+    Simplex Lattice, A-optimal design, Simplex Centroid, Hybrid, Pentagonal,
+    Hexagonal, Doehlert, Crossover study, Sequential analysis, I-optimal design
+  </p>-->
 </section>
 
 <section>
@@ -310,6 +632,9 @@ ofat_power = dexpy.power.f_power('+'.join(ofat_df.columns),
                                  ofat_df, 2.0, 0.05)
       </code>
     </pre>
+  <aside class="notes">
+    Mention the model parameter (patsy).
+  </aside>
   </section>
   <section data-markdown>
     <textarea data-template>
@@ -417,214 +742,6 @@ fractional_power = dexpy.power.f_power(model, coffee_design, 2.0, 0.05)
 			</code>
 		</pre>
 	</section>
-  <section>
-    <table style="font-size: 16;">
-      <thead>
-        <tr>
-          <th></th>
-          <th>amount</th>
-          <th>grind_size</th>
-          <th>brew_time</th>
-          <th>grind_type</th>
-          <th>beans</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>0</th>
-          <td>2.5</td>
-          <td>8</td>
-          <td>3.5</td>
-          <td>burr</td>
-          <td>dark</td>
-        </tr>
-        <tr>
-          <th>1</th>
-          <td>2.5</td>
-          <td>8</td>
-          <td>3.5</td>
-          <td>blade</td>
-          <td>light</td>
-        </tr>
-        <tr>
-          <th>2</th>
-          <td>2.5</td>
-          <td>8</td>
-          <td>4.5</td>
-          <td>burr</td>
-          <td>light</td>
-        </tr>
-        <tr>
-          <th>3</th>
-          <td>2.5</td>
-          <td>8</td>
-          <td>4.5</td>
-          <td>blade</td>
-          <td>dark</td>
-        </tr>
-        <tr>
-          <th>4</th>
-          <td>2.5</td>
-          <td>10</td>
-          <td>3.5</td>
-          <td>burr</td>
-          <td>light</td>
-        </tr>
-        <tr>
-          <th>5</th>
-          <td>2.5</td>
-          <td>10</td>
-          <td>3.5</td>
-          <td>blade</td>
-          <td>dark</td>
-        </tr>
-        <tr>
-          <th>6</th>
-          <td>2.5</td>
-          <td>10</td>
-          <td>4.5</td>
-          <td>burr</td>
-          <td>dark</td>
-        </tr>
-        <tr>
-          <th>7</th>
-          <td>2.5</td>
-          <td>10</td>
-          <td>4.5</td>
-          <td>blade</td>
-          <td>light</td>
-        </tr>
-        <tr>
-          <th>8</th>
-          <td>4</td>
-          <td>8</td>
-          <td>3.5</td>
-          <td>burr</td>
-          <td>light</td>
-        </tr>
-        <tr>
-          <th>9</th>
-          <td>4</td>
-          <td>8</td>
-          <td>3.5</td>
-          <td>blade</td>
-          <td>dark</td>
-        </tr>
-        <tr>
-          <th>10</th>
-          <td>4</td>
-          <td>8</td>
-          <td>4.5</td>
-          <td>burr</td>
-          <td>dark</td>
-        </tr>
-        <tr>
-          <th>11</th>
-          <td>4</td>
-          <td>8</td>
-          <td>4.5</td>
-          <td>blade</td>
-          <td>light</td>
-        </tr>
-        <tr>
-          <th>12</th>
-          <td>4</td>
-          <td>10</td>
-          <td>3.5</td>
-          <td>burr</td>
-          <td>dark</td>
-        </tr>
-        <tr>
-          <th>13</th>
-          <td>4</td>
-          <td>10</td>
-          <td>3.5</td>
-          <td>blade</td>
-          <td>light</td>
-        </tr>
-        <tr>
-          <th>14</th>
-          <td>4</td>
-          <td>10</td>
-          <td>4.5</td>
-          <td>burr</td>
-          <td>light</td>
-        </tr>
-        <tr>
-          <th>15</th>
-          <td>4</td>
-          <td>10</td>
-          <td>4.5</td>
-          <td>blade</td>
-          <td>dark</td>
-        </tr>
-          <tr>
-          <th>16</th>
-          <td>3.25</td>
-          <td>9</td>
-          <td>4</td>
-          <td>burr</td>
-          <td>light</td>
-        </tr>
-        <tr>
-          <th>17</th>
-          <td>3.25</td>
-          <td>9</td>
-          <td>4</td>
-          <td>burr</td>
-          <td>dark</td>
-        </tr>
-        <tr>
-          <th>18</th>
-          <td>3.25</td>
-          <td>9</td>
-          <td>4</td>
-          <td>blade</td>
-          <td>light</td>
-        </tr>
-        <tr>
-          <th>19</th>
-          <td>3.25</td>
-          <td>9</td>
-          <td>4</td>
-          <td>blade</td>
-          <td>dark</td>
-        </tr>
-        <tr>
-          <th>20</th>
-          <td>3.25</td>
-          <td>9</td>
-          <td>4</td>
-          <td>burr</td>
-          <td>light</td>
-        </tr>
-        <tr>
-          <th>21</th>
-          <td>3.25</td>
-          <td>9</td>
-          <td>4</td>
-          <td>burr</td>
-          <td>dark</td>
-        </tr>
-        <tr>
-          <th>22</th>
-          <td>3.25</td>
-          <td>9</td>
-          <td>4</td>
-          <td>blade</td>
-          <td>light</td>
-        </tr>
-        <tr>
-          <th>23</th>
-          <td>3.25</td>
-          <td>9</td>
-          <td>4</td>
-          <td>blade</td>
-          <td>dark</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
 
   <section>
     <h2>2<sup>(5-1)</sup> Factorial Power</h2>
@@ -670,6 +787,7 @@ coffee_design.columns = ['amount',
                          'brew_time',
                          'grind_type',
                          'beans']
+
 twofi_model = "(" + '+'.join(coffee_design.columns) + ")**2"
 fractional_power = dexpy.power.f_power(twofi_model, coffee_design,
                                        2.0, 0.05)
@@ -750,6 +868,457 @@ fractional_power = dexpy.power.f_power(twofi_model, coffee_design,
       </tbody>
     </table>
   </section>
+</section>
+
+<section>
+  <table class="coffeeTable">
+    <thead>
+      <tr>
+        <th></th>
+        <th>amount</th>
+        <th>grind_size</th>
+        <th>brew_time</th>
+        <th>grind_type</th>
+        <th>beans</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>0</th>
+        <td>2.5</td>
+        <td>8</td>
+        <td>3.5</td>
+        <td>burr</td>
+        <td>dark</td>
+      </tr>
+      <tr>
+        <th>1</th>
+        <td>2.5</td>
+        <td>8</td>
+        <td>3.5</td>
+        <td>blade</td>
+        <td>light</td>
+      </tr>
+      <tr>
+        <th>2</th>
+        <td>2.5</td>
+        <td>8</td>
+        <td>4.5</td>
+        <td>burr</td>
+        <td>light</td>
+      </tr>
+      <tr>
+        <th>3</th>
+        <td>2.5</td>
+        <td>8</td>
+        <td>4.5</td>
+        <td>blade</td>
+        <td>dark</td>
+      </tr>
+      <tr>
+        <th>4</th>
+        <td>2.5</td>
+        <td>10</td>
+        <td>3.5</td>
+        <td>burr</td>
+        <td>light</td>
+      </tr>
+      <tr>
+        <th>5</th>
+        <td>2.5</td>
+        <td>10</td>
+        <td>3.5</td>
+        <td>blade</td>
+        <td>dark</td>
+      </tr>
+      <tr>
+        <th>6</th>
+        <td>2.5</td>
+        <td>10</td>
+        <td>4.5</td>
+        <td>burr</td>
+        <td>dark</td>
+      </tr>
+      <tr>
+        <th>7</th>
+        <td>2.5</td>
+        <td>10</td>
+        <td>4.5</td>
+        <td>blade</td>
+        <td>light</td>
+      </tr>
+      <tr>
+        <th>8</th>
+        <td>4</td>
+        <td>8</td>
+        <td>3.5</td>
+        <td>burr</td>
+        <td>light</td>
+      </tr>
+      <tr>
+        <th>9</th>
+        <td>4</td>
+        <td>8</td>
+        <td>3.5</td>
+        <td>blade</td>
+        <td>dark</td>
+      </tr>
+      <tr>
+        <th>10</th>
+        <td>4</td>
+        <td>8</td>
+        <td>4.5</td>
+        <td>burr</td>
+        <td>dark</td>
+      </tr>
+      <tr>
+        <th>11</th>
+        <td>4</td>
+        <td>8</td>
+        <td>4.5</td>
+        <td>blade</td>
+        <td>light</td>
+      </tr>
+      <tr>
+        <th>12</th>
+        <td>4</td>
+        <td>10</td>
+        <td>3.5</td>
+        <td>burr</td>
+        <td>dark</td>
+      </tr>
+      <tr>
+        <th>13</th>
+        <td>4</td>
+        <td>10</td>
+        <td>3.5</td>
+        <td>blade</td>
+        <td>light</td>
+      </tr>
+      <tr>
+        <th>14</th>
+        <td>4</td>
+        <td>10</td>
+        <td>4.5</td>
+        <td>burr</td>
+        <td>light</td>
+      </tr>
+      <tr>
+        <th>15</th>
+        <td>4</td>
+        <td>10</td>
+        <td>4.5</td>
+        <td>blade</td>
+        <td>dark</td>
+      </tr>
+        <tr>
+        <th>16</th>
+        <td>3.25</td>
+        <td>9</td>
+        <td>4</td>
+        <td>burr</td>
+        <td>light</td>
+      </tr>
+      <tr>
+        <th>17</th>
+        <td>3.25</td>
+        <td>9</td>
+        <td>4</td>
+        <td>burr</td>
+        <td>dark</td>
+      </tr>
+      <tr>
+        <th>18</th>
+        <td>3.25</td>
+        <td>9</td>
+        <td>4</td>
+        <td>blade</td>
+        <td>light</td>
+      </tr>
+      <tr>
+        <th>19</th>
+        <td>3.25</td>
+        <td>9</td>
+        <td>4</td>
+        <td>blade</td>
+        <td>dark</td>
+      </tr>
+      <tr>
+        <th>20</th>
+        <td>3.25</td>
+        <td>9</td>
+        <td>4</td>
+        <td>burr</td>
+        <td>light</td>
+      </tr>
+      <tr>
+        <th>21</th>
+        <td>3.25</td>
+        <td>9</td>
+        <td>4</td>
+        <td>burr</td>
+        <td>dark</td>
+      </tr>
+      <tr>
+        <th>22</th>
+        <td>3.25</td>
+        <td>9</td>
+        <td>4</td>
+        <td>blade</td>
+        <td>light</td>
+      </tr>
+      <tr>
+        <th>23</th>
+        <td>3.25</td>
+        <td>9</td>
+        <td>4</td>
+        <td>blade</td>
+        <td>dark</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Conduct the Experiment</h2>
+  <img class="fragment" src="img/empty_cups.jpg">
+</section>
+
+<section>
+  <table class="coffeeTable coffeeResultsTable">
+    <thead>
+      <tr>
+        <th></th>
+        <th>amount</th>
+        <th>grind_size</th>
+        <th>brew_time</th>
+        <th>grind_type</th>
+        <th>beans</th>
+        <th>taste_rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>0</th>
+        <td>2.5</td>
+        <td>8</td>
+        <td>3.5</td>
+        <td>burr</td>
+        <td>dark</td>
+        <td>4.53</td>
+      </tr>
+      <tr>
+        <th>1</th>
+        <td>2.5</td>
+        <td>8</td>
+        <td>3.5</td>
+        <td>blade</td>
+        <td>light</td>
+        <td>1.6336</td>
+      </tr>
+      <tr>
+        <th>2</th>
+        <td>2.5</td>
+        <td>8</td>
+        <td>4.5</td>
+        <td>burr</td>
+        <td>light</td>
+        <td>1.363</td>
+      </tr>
+      <tr>
+        <th>3</th>
+        <td>2.5</td>
+        <td>8</td>
+        <td>4.5</td>
+        <td>blade</td>
+        <td>dark</td>
+        <td>8.7</td>
+      </tr>
+      <tr>
+        <th>4</th>
+        <td>2.5</td>
+        <td>10</td>
+        <td>3.5</td>
+        <td>burr</td>
+        <td>light</td>
+        <td>1.679</td>
+      </tr>
+      <tr>
+        <th>5</th>
+        <td>2.5</td>
+        <td>10</td>
+        <td>3.5</td>
+        <td>blade</td>
+        <td>dark</td>
+        <td>2.895</td>
+      </tr>
+      <tr>
+        <th>6</th>
+        <td>2.5</td>
+        <td>10</td>
+        <td>4.5</td>
+        <td>burr</td>
+        <td>dark</td>
+        <td>7.341</td>
+      </tr>
+      <tr>
+        <th>7</th>
+        <td>2.5</td>
+        <td>10</td>
+        <td>4.5</td>
+        <td>blade</td>
+        <td>light</td>
+        <td>3.642</td>
+      </tr>
+      <tr>
+        <th>8</th>
+        <td>4</td>
+        <td>8</td>
+        <td>3.5</td>
+        <td>burr</td>
+        <td>light</td>
+        <td>6.974</td>
+      </tr>
+      <tr>
+        <th>9</th>
+        <td>4</td>
+        <td>8</td>
+        <td>3.5</td>
+        <td>blade</td>
+        <td>dark</td>
+        <td>3.398</td>
+      </tr>
+      <tr>
+        <th>10</th>
+        <td>4</td>
+        <td>8</td>
+        <td>4.5</td>
+        <td>burr</td>
+        <td>dark</td>
+        <td>3.913</td>
+      </tr>
+      <tr>
+        <th>11</th>
+        <td>4</td>
+        <td>8</td>
+        <td>4.5</td>
+        <td>blade</td>
+        <td>light</td>
+        <td>9.04</td>
+      </tr>
+      <tr>
+        <th>12</th>
+        <td>4</td>
+        <td>10</td>
+        <td>3.5</td>
+        <td>burr</td>
+        <td>dark</td>
+        <td>5.092</td>
+      </tr>
+      <tr>
+        <th>13</th>
+        <td>4</td>
+        <td>10</td>
+        <td>3.5</td>
+        <td>blade</td>
+        <td>light</td>
+        <td>3.718</td>
+      </tr>
+      <tr>
+        <th>14</th>
+        <td>4</td>
+        <td>10</td>
+        <td>4.5</td>
+        <td>burr</td>
+        <td>light</td>
+        <td>8.227</td>
+      </tr>
+      <tr>
+        <th>15</th>
+        <td>4</td>
+        <td>10</td>
+        <td>4.5</td>
+        <td>blade</td>
+        <td>dark</td>
+        <td>6.992</td>
+      </tr>
+        <tr>
+        <th>16</th>
+        <td>3.25</td>
+        <td>9</td>
+        <td>4</td>
+        <td>burr</td>
+        <td>light</td>
+        <td>4.419</td>
+      </tr>
+      <tr>
+        <th>17</th>
+        <td>3.25</td>
+        <td>9</td>
+        <td>4</td>
+        <td>burr</td>
+        <td>dark</td>
+        <td>6.806</td>
+      </tr>
+      <tr>
+        <th>18</th>
+        <td>3.25</td>
+        <td>9</td>
+        <td>4</td>
+        <td>blade</td>
+        <td>light</td>
+        <td>3.512</td>
+      </tr>
+      <tr>
+        <th>19</th>
+        <td>3.25</td>
+        <td>9</td>
+        <td>4</td>
+        <td>blade</td>
+        <td>dark</td>
+        <td>5.36</td>
+      </tr>
+      <tr>
+        <th>20</th>
+        <td>3.25</td>
+        <td>9</td>
+        <td>4</td>
+        <td>burr</td>
+        <td>light</td>
+        <td>4.865</td>
+      </tr>
+      <tr>
+        <th>21</th>
+        <td>3.25</td>
+        <td>9</td>
+        <td>4</td>
+        <td>burr</td>
+        <td>dark</td>
+        <td>6.342</td>
+      </tr>
+      <tr>
+        <th>22</th>
+        <td>3.25</td>
+        <td>9</td>
+        <td>4</td>
+        <td>blade</td>
+        <td>light</td>
+        <td>4.38</td>
+      </tr>
+      <tr>
+        <th>23</th>
+        <td>3.25</td>
+        <td>9</td>
+        <td>4</td>
+        <td>blade</td>
+        <td>dark</td>
+        <td>5.942</td>
+      </tr>
+    </tbody>
+  </table>
+  <aside class="notes">
+    Not big data when it can fit on a slide.
+  </aside>
 </section>
 
 <section>
