@@ -21,17 +21,12 @@
 <div class="reveal">
 <div class="slides">
 
-<section data-markdown>
-	<textarea data-template>
+<section>
+  <h2>Design of Experiments in Python</h2>
 
-## Design of Experiments in Python
-
-Hank Anderson
-
-[hank@statease.com](mailto:hank@statease.com)<br>
-[https://github.com/hpanderson/dexpy-bdt](https://github.com/hpanderson/dexpy-bdt)
-
-	</textarea>
+  <p>Hank Anderson</p>
+  <p><a href="mailto:hank@statease.com">hank@statease.com</a></p>
+  <p><a href="https://github.com/hpanderson/dexpy-bdt">https://github.com/hpanderson/dexpy-bdt</a></p>
 </section>
 
 <section data-markdown>
@@ -55,6 +50,10 @@ Hank Anderson
     <p>A systematic series of tests, in which purposeful changes are made to input factors, so that you may identify causes for significant changes in the output responses.</p>
     <!--<p>NIST has a <a href="http://www.itl.nist.gov/div898/handbook/pri/section1/pri1.htm">nice primer on DOE</a>.</p>-->
     <img src="img/doe_digraph.svg">
+
+    <aside class="notes">
+      Emphasise controllable factors
+    </aside>
 
   </section>
 
@@ -82,6 +81,9 @@ Hank Anderson
       <img src="img/correlation.png"><br>
       <small style="font-size:8;"><a href="http://tylervigen.com/view_correlation?id=97">source</a></small>
     </p>
+    <aside class="notes">
+      Need to be in control of the process, making changes that produce data, not merely observing or receiving data.
+    </aside>
   </section>
   <section>
     <blockquote>
@@ -92,28 +94,15 @@ Hank Anderson
 </section>
 
 <section>
-  <section data-markdown>
-    <textarea data-template>
-## What Is It For?
-
-* **Screening Experiments** - Determining which inputs to your system are important
-* **Modeling a Process** - Gain a better understanding of your system
-* **Optimization** - Find the combination of inputs that results in a better output
-* **Robustness** - Find a combination of inputs that produces a consistent result
-    </textarea>
-  </section>
-
-  <section data-markdown>
-    <textarea data-template>
-## Examples
-* Multivariate testing of a website
-* Allocating marketing budget resources
-* Microwave popcorn
-    <aside class="notes">
-      Mention blown up microwave.
-    </aside>
-    </textarea>
-  </section>
+  <h2>What Is It For?</h2>
+  <div style="font-size:24; text-align: left;">
+    <p class="fragment"><b>Screening</b> - Identify important factors</p>
+    <p class="fragment" style="padding-left:50px;">Example: A manufacturer changing many different properties of a stent to determine which ones affect burst pressure.</p>
+    <p class="fragment"><b>Optimization</b> - Improve the output of your process</p>
+    <p class="fragment" style="padding-left:50px;">Example: Multifactor testing of different layouts of a website.</p>
+    <p class="fragment"><b>Robustness</b> - Find a combination of inputs that produces a consistent result</p>
+    <p class="fragment" style="padding-left:50px;">Example: Injection molding process with a difficult to control moisture component.</p>
+  </div>
 </section>
 
 <section data-markdown>
@@ -121,12 +110,12 @@ Hank Anderson
 ## DoE in Python: dexpy
 
 * Based on Design-Expert<sup>&reg;</sup> software, a package for design and analysis of industrial experiments
-* Apache2 licensed, pure python (for now), available on pypi
+* Apache2 licensed
 * Other alternatives are:
-   * [pyDOE](https://github.com/tisimst/pyDOE) (not actively maintained)
-   * R [???](https://cran.r-project.org/web/views/ExperimentalDesign.html)
-   * [SciDOE](https://forge.scilab.org/index.php/p/scidoe/)
-   * [gosset](http://neilsloane.com/gosset/)
+   * Python - [pyDOE](https://github.com/tisimst/pyDOE)
+   * R - [AlgDesign, DoE.base, many more...](https://cran.r-project.org/web/views/ExperimentalDesign.html)
+   * Scilab - [SciDOE](https://forge.scilab.org/index.php/p/scidoe/)
+   * c - [gosset](http://neilsloane.com/gosset/)
    * Proprietary software ($$$) - [Design-Expert](https://www.statease.com), [JMP](https://www.jmp.com), [Minitab](https://www.minitab.com)
   </textarea>
 </section>
@@ -265,6 +254,14 @@ Hank Anderson
       can also increase power.
     </p>
   </section>
+  <!--<section>
+    <blockquote>
+      Even the most stupid of men, by some instinct of nature, by himself and
+      without any instruction, is convinced that the more observations have
+      been made, the less danger there is of wandering from one's goal.
+    </blockquote>
+    -Jacob Bernoulli
+  </section>-->
 </section>
 
 <section>
@@ -341,9 +338,6 @@ ofat_power = dexpy.power.f_power('+'.join(ofat_df.columns),
   </section>
   <section>
     <img src="img/factorial.svg">
-    <aside class="notes">
-      Warn about extreme settings (microwave explosion).
-    </aside>
   </section>
   <section>
     <img src="img/factorial_3d.svg">
