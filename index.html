@@ -100,7 +100,7 @@ div.coffeePot img {
 
   </section>
 
-  <section>
+  <!--<section>
 
     <h2>History of DOE</h2>
 		<img style="float: left;" src="img/fisher.jpg">
@@ -112,11 +112,8 @@ div.coffeePot img {
       <li>"The Lady Tasting Tea" experiment</li>
     </ul>
 
-  </section>
+  </section>-->
 
-</section>
-
-<section>
   <section>
     <h1>"Purposeful Changes"</h1>
     <p class="fragment">Correlation != Causation</p>
@@ -151,9 +148,9 @@ div.coffeePot img {
     <h2>What Is DOE Used For?</h2>
     <p><b>Optimization</b> - Improve the output of your process</p>
     <div class="fragment" style="text-align: left;">
-      <img style="float:left; margin-right: 20px;" src="img/layout.png" height="200px">
+      <img style="float:left; margin-right: 20px; padding: 5px; background: white;" src="img/layout.png" height="200px">
       <p>
-        Example: Multifactor testing of different layouts of a website.
+      Example: Multifactor testing of different layouts of a website (Google's <a href="https://support.google.com/360suite/optimize/answer/7012154">Optimize</a>, Facebook's <a href="http://facebook.github.io/planout/">PlanOut</a>).
       </p>
     </div>
   </section>
@@ -166,6 +163,15 @@ div.coffeePot img {
         Example: Injection molding process with a difficult to control moisture component.
       </p>
     </div>
+  </section>
+  <section>
+    <h2>Big data?</h2>
+    <ul>
+      <li>Computer experiments</li>
+      <li>A/B testing</li>
+      <li>Supplement to observational data</li>
+      <li>Optimal design to partition a larger set of data</li>
+    </li>
   </section>
 </section>
 
@@ -613,9 +619,9 @@ div.coffeePot img {
     <img src="img/ofat.svg">
 	</section>
 
-  <section>
+  <!--<section>
     <img src="img/ofat_3d.svg">
-	</section>
+  </section>-->
 </section>
 
 <section>
@@ -675,9 +681,9 @@ ofat_power = dexpy.power.f_power('+'.join(ofat_df.columns),
   <section>
     <img src="img/factorial.svg">
   </section>
-  <section>
+  <!--<section>
     <img src="img/factorial_3d.svg">
-  </section>
+  </section>-->
 </section>
 
 
@@ -1559,22 +1565,6 @@ fg = sns.factorplot('amount', 'taste_rating', hue='beans',
           <td>10</td>
           <td>4.5</td>
           <td>blade</td>
-          <td>light</td>
-          <td>2.81345</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>10</td>
-          <td>4.5</td>
-          <td>blade</td>
-          <td>dark</td>
-          <td>5.91462</td>
-        </tr>
-        <tr>
-          <td>2.5</td>
-          <td>10</td>
-          <td>4.5</td>
-          <td>blade</td>
           <td>dark</td>
           <td class="fragment highlight-green">6.93237</td>
         </tr>
@@ -1592,7 +1582,7 @@ fg = sns.factorplot('amount', 'taste_rating', hue='beans',
 </section>
 
 <section>
-  <section data-markdown>
+  <!--<section data-markdown>
     <textarea data-template>
 # The End
 
@@ -1602,7 +1592,7 @@ results using statsmodels.
 * Using predictons from the statsmodels fit, we were able to find a
 combination of inputs that resulted in a better tasting (and cheaper!) coffee.
     </textarea>
-  </section>
+  </section>-->
 
   <section data-markdown>
     <textarea data-template>
