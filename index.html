@@ -165,12 +165,12 @@ div.coffeePot img {
     </div>
   </section>
   <section>
-    <h2>Big data?</h2>
+    <h2>Big Data</h2>
     <ul>
       <li>Computer experiments</li>
       <li>A/B testing</li>
-      <li>Supplement to observational data</li>
-      <li>Optimal design to partition a larger set of data</li>
+      <li>DOE as supplement to observational data</li>
+      <li>Optimal design used to partition a larger set of data</li>
     </li>
   </section>
 </section>
@@ -1406,7 +1406,7 @@ grind_type:beans       0.0360   0.1381  0.2607 <span class="fragment highlight-r
 reduced_model = "amount + grind_size + brew_time + "
                 "grind_type + beans + "
                 "amount:beans + grind_size:brew_time + "
-                "grind_size:grind_type"
+                "grind_size:grind_type + brew_time:grind_type"
 
 lm = statsmodels.formula.api.ols("taste_rating ~" + reduced_model,
                                   data=coffee_design).fit()
@@ -1419,25 +1419,26 @@ print(lm.summary2())
     <pre>
                    Results: Ordinary least squares
 =====================================================================
-Model:                OLS               Adj. R-squared:      <span class="fragment highlight-blue">0.746</span>
-Dependent Variable:   taste_rating      AIC:                 79.5691
-Date:                 2017-06-02 23:07  BIC:                 90.1715
-No. Observations:     24                Log-Likelihood:      -30.785
-Df Model:             8                 F-statistic:         9.438
-Df Residuals:         15                Prob (F-statistic):  <span class="fragment highlight-blue">0.000123</span>
-R-squared:            <span class="fragment highlight-blue">0.834</span>             Scale:               1.2184
+Model:                OLS               Adj. R-squared:      <span class="fragment highlight-green">0.914</span>
+Dependent Variable:   taste_rating      AIC:                 53.7876 
+Date:                 2017-06-06 20:58  BIC:                 65.5681 
+No. Observations:     24                Log-Likelihood:      -16.894 
+Df Model:             9                 F-statistic:         28.31   
+Df Residuals:         14                Prob (F-statistic):  <span class="fragment highlight-blue">1.79e-07</span>
+R-squared:            <span class="fragment highlight-blue">0.948</span>             Scale:               0.41022 
 ---------------------------------------------------------------------
                        Coef.  Std.Err.    t    P>|t|   [0.025  0.975]
 ---------------------------------------------------------------------
-Intercept              5.0318   0.2253 22.3328 0.0000  4.5516  5.5121
-amount                 0.9731   0.2759  3.5266 0.0031  0.3850  1.5613
-grind_size             0.0021   0.2759  0.0078 0.9939 -0.5860  0.5903
-brew_time              1.2061   0.2759  4.3709 0.0005  0.6180  1.7943
-grind_type            -0.0974   0.2253 -0.4324 0.6716 -0.5777  0.3828
-beans                  0.5774   0.2253  2.5628 0.0216  0.0972  1.0577
-<span class="fragment highlight-green">amount:beans          -1.4820   0.2759 -5.3707 0.0001 -2.0702 -0.8939</span>
-<span class="fragment highlight-green">grind_size:brew_time   0.3961   0.2759  1.4354 0.1717 -0.1921  0.9843</span>
-grind_size:grind_type -0.6927   0.2759 -2.5103 0.0240 -1.2809 -0.1046
+Intercept              5.0318   0.1307 38.4878 0.0000  4.7514  5.3122
+amount                 0.9731   0.1601  6.0776 0.0000  0.6297  1.3166
+grind_size             0.0021   0.1601  0.0134 0.9895 -0.3413  0.3456
+brew_time              1.2061   0.1601  7.5328 0.0000  0.8627  1.5496
+grind_type            -0.0974   0.1307 -0.7453 0.4684 -0.3778  0.1830
+beans                  0.5774   0.1307  4.4167 0.0006  0.2970  0.8578
+<span class="fragment highlight-green">amount:beans          -1.4820   0.1601 -9.2557 0.0000 -1.8254 -1.1386</span>
+grind_size:brew_time   0.3961   0.1601  2.4738 0.0268  0.0527  0.7395
+grind_size:grind_type -0.6927   0.1601 -4.3263 0.0007 -1.0361 -0.3493
+brew_time:grind_type   0.8850   0.1601  5.5272 0.0001  0.5416  1.2284
 =====================================================================
     </pre>
   </section>
@@ -1447,7 +1448,7 @@ grind_size:grind_type -0.6927   0.2759 -2.5103 0.0240 -1.2809 -0.1046
   <section>
     <h1>Prediction</h1>
   </section>
-  <!--<section>
+  <section>
     <h2>Actual vs Predicted</h2>
     <p>
       If we take the experiment data from the design and use our new model to fit that data, then plot it against
@@ -1475,7 +1476,7 @@ fg.map(plt.scatter, 'actual', 'predicted')
   </section>
   <section>
     <img src="img/actual_vs_predicted.svg">
-  </section>-->
+  </section>
 
   <section>
     <h2>Interaction Plots</h2>
@@ -1484,7 +1485,7 @@ fg.map(plt.scatter, 'actual', 'predicted')
     </p>
   </section>
 
-  <section>
+  <!--<section>
     <h2>Interaction Plots</h2>
     <h3>Grind Size vs Brew Time</h3>
     <pre>
@@ -1511,7 +1512,7 @@ fg = sns.factorplot('grind_size',
       In this graph you can see that at the low brew time the larger grind size
       results in a poor taste rating, likely because the coffee is too weak.
     </p>
-  </section>
+  </section>-->
 
   <section>
     <h2>Interaction Plots</h2>
@@ -1539,16 +1540,16 @@ fg = sns.factorplot('amount', 'taste_rating', hue='beans',
   <section>
     <img src="img/amount_vs_beans.svg">
     <p>
-      This graph contains the prediction with the highest taste rating, 7.72.
+      This graph contains the prediction with the highest taste rating, 8.61.
       However, if you look at the dark bean line there is a point where we can
-      get a rating of 6.93 with 2.5oz of grounds.
+      get a rating of 7.82 with 2.5oz of grounds.
     </p>
   </section>
 
   <section>
     <h2>Interaction Plots</h2>
     <h3>Amount vs Bean Type</h3>
-    <table>
+    <table style="font-size: 22pt;">
       <thead>
         <tr>
           <th>amount</th>
@@ -1566,7 +1567,7 @@ fg = sns.factorplot('amount', 'taste_rating', hue='beans',
           <td>4.5</td>
           <td>blade</td>
           <td>dark</td>
-          <td class="fragment highlight-green">6.93237</td>
+          <td class="fragment highlight-green">7.81739</td>
         </tr>
         <tr>
           <td>4</td>
@@ -1574,7 +1575,7 @@ fg = sns.factorplot('amount', 'taste_rating', hue='beans',
           <td>4.5</td>
           <td>blade</td>
           <td>light</td>
-          <td class="fragment highlight-green">7.7238</td>
+          <td class="fragment highlight-green">8.60883</td>
         </tr>
       </tbody>
     </table>
